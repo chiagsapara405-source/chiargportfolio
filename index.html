@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chirag Sapra | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    /* ── CODE CARD ── */
+    .code-card {
+      background: #141820;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      line-height: 1.85;
+    }
+    .code-card-bar {
+      background: #1c2030;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .code-dots { display: flex; gap: 7px; }
+    .code-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .dot-red    { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green  { background: #28c840; }
+    .code-filename {
+      margin-left: auto;
+      font-size: 0.72rem;
+      color: #475569;
+      font-family: 'Courier New', monospace;
+    }
+    .code-body { padding: 22px 24px; }
+    .code-body .line { display: block; }
+    .cc { color: #3d5166; }
+    .ck { color: #8b5cf6; }
+    .cs { color: #4ade80; }
+    .cf { color: #f59e0b; }
+    .cn { color: #60a5fa; }
+    .ct { color: #dde4f0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(15, 17, 23, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0 6%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: #4ade80; }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #fff; }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px; height: 2px;
+      background: #94a3b8;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: #0f1117;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 20px 6%;
+      flex-direction: column;
+      gap: 18px;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; font-weight: 500; color: #94a3b8; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 6% 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .hero-greeting {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #4ade80;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+
+    .hero-name {
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .hero-role {
+      font-size: 1rem;
+      color: #64748b;
+      font-weight: 400;
+      margin-bottom: 22px;
+    }
+    .hero-role strong { color: #94a3b8; font-weight: 500; }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: #64748b;
+      max-width: 500px;
+      line-height: 1.85;
+      margin-bottom: 36px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 11px 26px;
+      background: #4ade80;
+      color: #0f1117;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #22c55e; transform: translateY(-1px); }
+
+    .btn-secondary {
+      padding: 11px 26px;
+      background: transparent;
+      color: #94a3b8;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.25); color: #fff; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 80px 6%; }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4ade80;
+      margin-bottom: 10px;
+    }
+
+    .section-heading {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 0.88rem;
+      color: #64748b;
+      max-width: 500px;
+      margin-bottom: 48px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: #13161e;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+      max-width: 960px;
+    }
+
+    .about-text p {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: #e2e8f0; font-weight: 600; }
+
+    .about-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+    }
+    .info-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .info-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #4ade80;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .info-value {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      max-width: 900px;
+    }
+
+    .skill-item {
+      background: #13161e;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 20px 18px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-item:hover {
+      border-color: rgba(74,222,128,0.25);
+      transform: translateY(-2px);
+    }
+
+    .skill-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .skill-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .skill-name .icon { font-size: 1rem; }
+    .skill-pct {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #4ade80;
+    }
+
+    .skill-bar {
+      height: 4px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%;
+      background: #4ade80;
+      border-radius: 4px;
+      width: 0;
+      transition: width 1s ease;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: #13161e; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);}
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 960px;
+    }
+
+    .proj-card {
+      background: #0f1117;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 28px;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .proj-card:hover {
+      border-color: rgba(74,222,128,0.3);
+      transform: translateY(-3px);
+    }
+
+    .proj-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      gap: 10px;
+    }
+
+    .proj-emoji { font-size: 1.8rem; }
+
+    .proj-badge {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #4ade80;
+      background: rgba(74,222,128,0.1);
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 100px;
+      padding: 3px 10px;
+      white-space: nowrap;
+    }
+
+    .proj-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .proj-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .proj-tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: #94a3b8;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
+
+    .proj-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .proj-features li {
+      font-size: 0.8rem;
+      color: #64748b;
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .proj-features li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: #4ade80;
+    }
+
+    .proj-footer {
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.72rem;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ── INSIGHTS ── */
+    .insights-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 960px;
+    }
+
+    .insight-card {
+      background: #13161e;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 26px;
+      transition: border-color 0.2s;
+    }
+    .insight-card:hover { border-color: rgba(74,222,128,0.2); }
+
+    .insight-type {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .type-choice { color: #60a5fa; }
+    .type-problem { color: #f87171; }
+    .type-growth { color: #a78bfa; }
+
+    .insight-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 12px;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .insight-body {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.85;
+    }
+    .insight-body strong { color: #94a3b8; font-weight: 600; }
+
+    .insight-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 14px 0;
+    }
+
+    .insight-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    code.ic {
+      font-family: 'Courier New', monospace;
+      font-size: 0.78rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 1px 6px;
+      color: #4ade80;
+    }
+
+    /* ── CONTACT ── */
+    #contact { border-top: 1px solid rgba(255,255,255,0.05); }
+
+    .contact-inner {
+      max-width: 560px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: #13161e;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      transition: border-color 0.2s, background 0.2s;
+      color: #e2e8f0;
+    }
+    .contact-link:hover {
+      border-color: rgba(74,222,128,0.3);
+      background: rgba(74,222,128,0.04);
+    }
+    .contact-link-icon {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-link-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #4ade80;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .contact-link-val {
+      font-size: 0.84rem;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+    .contact-link-arrow {
+      margin-left: auto;
+      color: #334155;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .contact-link:hover .contact-link-arrow { color: #4ade80; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 24px 6%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      text-align: center;
+      font-size: 0.75rem;
+      color: #334155;
+    }
+    footer strong { color: #4ade80; font-weight: 500; }
+
+    /* ── FADE IN on scroll ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* delay helpers */
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+    .d4 { transition-delay: 0.32s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-code-col { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .insights-grid { grid-template-columns: 1fr; }
+
+      section { padding: 60px 5%; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name { font-size: 2rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">chirag<span>.</span>dev</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#insights">Learnings</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#insights">Learnings</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+
+    <!-- Left: text -->
+    <div class="hero-inner">
+      <p class="hero-greeting">👋 Hey there, I'm</p>
+      <h1 class="hero-name">Chirag Sapra</h1>
+      <p class="hero-role">
+        <strong>BCA Student</strong> at RK University &nbsp;·&nbsp; Semester 2
+      </p>
+      <p class="hero-desc">
+        I'm learning to build things with code. Started with C programming,
+        now exploring web development with HTML, CSS and JavaScript.
+        These are my projects so far — still a lot to learn, but enjoying every step.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">See My Projects</a>
+        <a href="#contact" class="btn-secondary">Contact Me</a>
+      </div>
+    </div>
+
+    <!-- Right: code card -->
+    <div class="hero-code-col">
+      <div class="code-card">
+        <div class="code-card-bar">
+          <div class="code-dots">
+            <div class="code-dot dot-red"></div>
+            <div class="code-dot dot-yellow"></div>
+            <div class="code-dot dot-green"></div>
+          </div>
+          <div class="code-filename">profile.c — chirag</div>
+        </div>
+        <div class="code-body">
+          <span class="line cc">// Chirag Sapra — Developer Profile</span>
+          <span class="line">&nbsp;</span>
+          <span class="line"><span class="ck">#include</span> <span class="cs">&lt;stdio.h&gt;</span></span>
+          <span class="line"><span class="ck">#include</span> <span class="cs">&lt;rk_university.h&gt;</span></span>
+          <span class="line"><span class="ck">#include</span> <span class="cs">&lt;passion.h&gt;</span></span>
+          <span class="line">&nbsp;</span>
+          <span class="line"><span class="ck">typedef struct</span> {</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">char</span>  <span class="ct">name[]</span>     = <span class="cs">"Chirag Sapra"</span>;</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">char</span>  <span class="ct">course[]</span>   = <span class="cs">"BCA"</span>;</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">int</span>   <span class="ct">semester</span>   = <span class="cn">2</span>;</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">char</span>  <span class="ct">skills[]</span>   = <span class="cs">"C,JS,HTML,CSS"</span>;</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">bool</span>  <span class="ct">building</span>   = <span class="cn">true</span>;</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">bool</span>  <span class="ct">open_collab</span> = <span class="cn">true</span>;</span>
+          <span class="line">} Developer;</span>
+          <span class="line">&nbsp;</span>
+          <span class="line"><span class="ck">int</span> <span class="cf">main</span>() {</span>
+          <span class="line">&nbsp;&nbsp;<span class="cf">printf</span>(<span class="cs">"Let's build! 🚀\n"</span>);</span>
+          <span class="line">&nbsp;&nbsp;<span class="ck">return</span> <span class="cn">0</span>;</span>
+          <span class="line">}</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-heading">A bit about myself</h2>
+  <p class="section-sub">Who I am and where I'm coming from.</p>
+
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>
+        I'm <strong>Chirag Sapra</strong>, currently in Semester 2 of my BCA at
+        <strong>RK University</strong>. I got into programming through my course
+        and quickly got hooked — there's something satisfying about making a
+        computer do exactly what you tell it to.
+      </p>
+      <p>
+        My first language was <strong>C</strong>, which I used to build a
+        Library Management System as a university project. It taught me a lot
+        about how programs actually work — structs, arrays, functions, loops.
+      </p>
+      <p>
+        More recently I've started learning <strong>HTML, CSS and JavaScript</strong>
+        to build for the web. I also built a Restaurant Management App using
+        Lovable while exploring modern tools. I'm still early in my journey
+        but building as much as I can.
+      </p>
+    </div>
+
+    <div class="about-info fade-in d1">
+      <div class="info-row">
+        <div class="info-icon">🎓</div>
+        <div>
+          <div class="info-label">Course</div>
+          <div class="info-value">BCA — Bachelor of Computer Applications</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🏫</div>
+        <div>
+          <div class="info-label">University</div>
+          <div class="info-value">RK University</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div>
+          <div class="info-label">Current Semester</div>
+          <div class="info-value">Semester 2 (2025)</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">🪪</div>
+        <div>
+          <div class="info-label">Enrolment No.</div>
+          <div class="info-value">25FOTCA11499</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Location</div>
+          <div class="info-value">India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2 class="section-heading">What I know so far</h2>
+  <p class="section-sub">Technologies I've been learning and using in my projects.</p>
+
+  <div class="skills-grid">
+    <div class="skill-item fade-in">
+      <div class="skill-top">
+        <div class="skill-name"><span class="icon">⚙️</span> C Programming</div>
+        <div class="skill-pct">70%</div>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+    </div>
+    <div class="skill-item fade-in d1">
+      <div class="skill-top">
+        <div class="skill-name"><span class="icon">🌐</span> HTML</div>
+        <div class="skill-pct">65%</div>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+    </div>
+    <div class="skill-item fade-in d2">
+      <div class="skill-top">
+        <div class="skill-name"><span class="icon">🎨</span> CSS</div>
+        <div class="skill-pct">60%</div>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+    </div>
+    <div class="skill-item fade-in d3">
+      <div class="skill-top">
+        <div class="skill-name"><span class="icon">⚡</span> JavaScript</div>
+        <div class="skill-pct">45%</div>
+      </div>
+      <div class="skill-bar"><div class="skill-fill" data-width="45"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <h2 class="section-heading">Things I've built</h2>
+  <p class="section-sub">Two projects so far — one in C, one using Lovable.</p>
+
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="proj-card fade-in">
+      <div class="proj-header">
+        <div class="proj-emoji">📚</div>
+        <span class="proj-badge">C Language</span>
+      </div>
+      <div class="proj-title">Library Management System</div>
+      <p class="proj-desc">
+        My university project — a console-based app built in pure C.
+        It manages book records using a struct array and lets you add,
+        search, issue and return books through a simple menu.
+      </p>
+      <div class="proj-tags">
+        <span class="proj-tag">C</span>
+        <span class="proj-tag">Structs</span>
+        <span class="proj-tag">Arrays</span>
+        <span class="proj-tag">scanf / printf</span>
+        <span class="proj-tag">VS Code</span>
+      </div>
+      <ul class="proj-features">
+        <li>Add books with ID, name, author, quantity and price</li>
+        <li>Auto price category: Cheap / Affordable / Expensive</li>
+        <li>Search any book by its ID</li>
+        <li>Issue a book (reduces quantity) and return it back</li>
+        <li>Menu-driven interface with switch-case</li>
+      </ul>
+      <div class="proj-footer">
+        📄 Enrolment: 25FOTCA11499 &nbsp;·&nbsp; RK University Project
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="proj-card fade-in d2">
+      <div class="proj-header">
+        <div class="proj-emoji">🍽️</div>
+        <span class="proj-badge">Lovable</span>
+      </div>
+      <div class="proj-title">Restaurant Management App</div>
+      <p class="proj-desc">
+        A web-based restaurant app I built using Lovable — a tool that
+        helps you build apps quickly. It has QR-based ordering, an admin
+        dashboard and a staff view for tracking orders.
+      </p>
+      <div class="proj-tags">
+        <span class="proj-tag">Lovable</span>
+        <span class="proj-tag">Web App</span>
+        <span class="proj-tag">QR Ordering</span>
+        <span class="proj-tag">Admin Panel</span>
+      </div>
+      <ul class="proj-features">
+        <li>QR code on each table for customer ordering</li>
+        <li>Admin dashboard to manage menu and orders</li>
+        <li>Staff panel to see and update order status</li>
+        <li>Customer-facing menu interface</li>
+      </ul>
+      <div class="proj-footer">
+        🔗 Link coming soon
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INSIGHTS -->
+<section id="insights">
+  <div class="section-label">What I Learned</div>
+  <h2 class="section-heading">Technical Insights</h2>
+  <p class="section-sub">Problems I ran into, choices I made, and what I took away from them.</p>
+
+  <div class="insights-grid">
+
+    <!-- Insight 1 -->
+    <div class="insight-card fade-in">
+      <div class="insight-type type-choice">💡 Tech Choice</div>
+      <div class="insight-title">Why I used a struct for the Library System</div>
+      <div class="insight-body">
+        In C, I needed to store multiple details about each book together —
+        the ID, name, author, quantity and price. I learned about
+        <strong>structs</strong> which let you group different types of data
+        into one unit. It made the code much cleaner than using separate arrays for each field.
+      </div>
+      <div class="insight-divider"></div>
+      <div class="insight-label">What I took from it</div>
+      <div class="insight-body">
+        Structs taught me to think about <strong>how to organise data</strong>
+        before writing functions. That idea — design your data first — is
+        something I keep using.
+      </div>
+    </div>
+
+    <!-- Insight 2 -->
+    <div class="insight-card fade-in d1">
+      <div class="insight-type type-problem">🐛 Bug I Fixed</div>
+      <div class="insight-title">Book names with spaces weren't saving correctly</div>
+      <div class="insight-body">
+        When I used <code class="ic">scanf("%s")</code> to read book names,
+        it would stop at the first space. So "Program With C" got saved as
+        just "Program". Took me a while to figure out why the data was wrong.
+      </div>
+      <div class="insight-divider"></div>
+      <div class="insight-label">How I fixed it</div>
+      <div class="insight-body">
+        My teacher told me to use <code class="ic">scanf(" %[^\n]", name)</code>
+        instead — this reads the whole line including spaces. The space before
+        <code class="ic">%</code> also clears leftover input from before.
+        Simple fix but I learned a lot about how <strong>scanf actually works</strong>.
+      </div>
+    </div>
+
+    <!-- Insight 3 -->
+    <div class="insight-card fade-in d2">
+      <div class="insight-type type-choice">💡 Tech Choice</div>
+      <div class="insight-title">Why I used Lovable for the Restaurant App</div>
+      <div class="insight-body">
+        I wanted to build something with a proper UI — QR codes, an admin
+        panel — but I didn't have the JavaScript skills yet to build it from
+        scratch. Lovable let me describe what I wanted and helped generate it.
+      </div>
+      <div class="insight-divider"></div>
+      <div class="insight-label">What I took from it</div>
+      <div class="insight-body">
+        I still had to make decisions about the <strong>flow and features</strong>.
+        It showed me what a real web app looks like under the hood and
+        motivated me to keep learning JS properly so I can build things like
+        this myself eventually.
+      </div>
+    </div>
+
+    <!-- Insight 4 -->
+    <div class="insight-card fade-in d3">
+      <div class="insight-type type-growth">📈 Growth</div>
+      <div class="insight-title">Moving from C to HTML and CSS</div>
+      <div class="insight-body">
+        Coming from C, HTML felt easy at first — just tags. But making things
+        look good and <strong>work on mobile</strong> was harder than expected.
+        Flexbox confused me for a while. I kept having to look things up.
+      </div>
+      <div class="insight-divider"></div>
+      <div class="insight-label">Where I'm at now</div>
+      <div class="insight-body">
+        I built this portfolio page to practice. I looked up how to do
+        scroll animations, how to make a navbar sticky, and how to make
+        it work on mobile. Still learning, but <strong>building real things
+        is the best way</strong> I've found to actually improve.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-heading">Get in touch</h2>
+    <p class="section-sub">
+      Feel free to reach out — whether it's about a project,
+      a collaboration, or just to say hi.
+    </p>
+
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:chiagsapara405@gmail.com">
+        <div class="contact-link-icon">✉️</div>
+        <div>
+          <div class="contact-link-label">Email</div>
+          <div class="contact-link-val">chiagsapara405@gmail.com</div>
+        </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <a class="contact-link" href="https://github.com/chiagsapara405-source" target="_blank" rel="noopener">
+        <div class="contact-link-icon">🐙</div>
+        <div>
+          <div class="contact-link-label">GitHub</div>
+          <div class="contact-link-val">github.com/chiagsapara405-source</div>
+        </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/chirag-sapara-085bb9389" target="_blank" rel="noopener">
+        <div class="contact-link-icon">💼</div>
+        <div>
+          <div class="contact-link-label">LinkedIn</div>
+          <div class="contact-link-val">Chirag Sapara</div>
+        </div>
+        <div class="contact-link-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  Made by <strong>Chirag Sapra</strong> · BCA Sem 2 · RK University · 2025
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => menu.classList.remove('open'));
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Skill bar animation
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const fill = entry.target.querySelector('.skill-fill');
+        if (fill) {
+          fill.style.width = fill.getAttribute('data-width') + '%';
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.skill-item').forEach(el => barObserver.observe(el));
+</script>
+
+</body>
+</html>
