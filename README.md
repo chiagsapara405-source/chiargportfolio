@@ -4,7 +4,7 @@ Welcome to my personal portfolio website! This is a modern, responsive web appli
 
 ## 🚀 Live Demo
 
-[View Live Portfolio]([text](http://chiargportfolio.netlify.app/)) *(Replace with your actual deployment URL)*
+[View Live Portfolio](http://chiargportfolio.netlify.app/)
 
 ## ✨ Features
 
