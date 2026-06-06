@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chirag Sapara — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================
+       SCREEN STYLES
+       ========================================== */
+    :root {
+      --accent: #7c3aed;
+      --accent-light: #a78bfa;
+      --ink: #0f1115;
+      --ink-2: #2a2e38;
+      --ink-3: #4a5060;
+      --muted: #7a8294;
+      --line: #e4e6ec;
+      --bg: #f6f7fb;
+      --paper: #ffffff;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .toolbar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+    }
+
+    .toolbar button {
+      background: var(--ink);
+      color: #fff;
+      border: none;
+      padding: 9px 16px;
+      border-radius: 999px;
+      font: 600 12px 'Inter', sans-serif;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .toolbar button:hover { background: var(--accent); transform: translateY(-1px); }
+    .toolbar button.secondary { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+
+    /* The A4 page */
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 28px auto;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 70mm 1fr;
+      box-shadow: 0 24px 60px rgba(15, 17, 21, 0.10), 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: linear-gradient(180deg, #fafbff 0%, #f3f4fb 100%);
+      padding: 22mm 8mm 18mm 8mm;
+      border-right: 1px solid var(--line);
+    }
+
+    .main {
+      padding: 22mm 12mm 18mm 10mm;
+    }
+
+    /* Sidebar blocks */
+    .sb-block { margin-bottom: 18px; }
+    .sb-block:last-child { margin-bottom: 0; }
+
+    .sb-label {
+      font-family: 'Inter Tight', 'Inter', sans-serif;
+      font-size: 9pt;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sb-label::before {
+      content: '';
+      width: 14px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    /* Contact */
+    .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 14px;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .sb-name {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 800;
+      font-size: 15pt;
+      letter-spacing: -0.02em;
+      margin-bottom: 2px;
+    }
+    .sb-role {
+      font-size: 9.5pt;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .contact-list { list-style: none; }
+    .contact-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 9.5pt;
+      margin-bottom: 7px;
+      color: var(--ink-2);
+      line-height: 1.4;
+      word-break: break-word;
+    }
+    .contact-list svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--accent);
+    }
+    .contact-list a {
+      color: var(--ink-2);
+      text-decoration: none;
+    }
+    .contact-list a:hover { color: var(--accent); }
+
+    /* Skill groups */
+    .skill-group { margin-bottom: 10px; }
+    .skill-group:last-child { margin-bottom: 0; }
+    .skill-cat {
+      font-size: 9pt;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .skill-items {
+      font-size: 9.5pt;
+      color: var(--ink-3);
+      line-height: 1.55;
+    }
+
+    /* Main blocks */
+    .block { margin-bottom: 16px; }
+    .block:last-child { margin-bottom: 0; }
+
+    .block-label {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 11pt;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      padding-bottom: 5px;
+      border-bottom: 2px solid var(--ink);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .block-label::before {
+      content: '';
+      width: 4px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .summary {
+      font-size: 10pt;
+      line-height: 1.55;
+      color: var(--ink-2);
+    }
+
+    /* Projects */
+    .project {
+      margin-bottom: 11px;
+    }
+    .project:last-child { margin-bottom: 0; }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 2px;
+    }
+    .project-name {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: var(--ink);
+    }
+    .project-link {
+      font-size: 8.5pt;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .project-stack {
+      font-size: 8.5pt;
+      color: var(--muted);
+      margin-bottom: 3px;
+      letter-spacing: 0.02em;
+    }
+    .project-desc {
+      font-size: 9.5pt;
+      color: var(--ink-2);
+      line-height: 1.5;
+    }
+    .project-desc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .project-desc li {
+      padding-left: 12px;
+      position: relative;
+      margin-bottom: 1px;
+    }
+    .project-desc li::before {
+      content: '▸';
+      color: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 9pt;
+    }
+
+    /* Education */
+    .edu-item { margin-bottom: 8px; }
+    .edu-item:last-child { margin-bottom: 0; }
+    .edu-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .edu-school {
+      font-family: 'Inter Tight', sans-serif;
+      font-weight: 700;
+      font-size: 10.5pt;
+      color: var(--ink);
+    }
+    .edu-year {
+      font-size: 8.5pt;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .edu-degree {
+      font-size: 9.5pt;
+      color: var(--ink-3);
+    }
+
+    /* Languages */
+    .lang-list { list-style: none; }
+    .lang-list li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 9.5pt;
+      margin-bottom: 4px;
+      color: var(--ink-2);
+    }
+    .lang-level {
+      color: var(--muted);
+      font-size: 8.5pt;
+    }
+
+    /* ==========================================
+       PRINT STYLES
+       ========================================== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      html, body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+      }
+      .toolbar { display: none !important; }
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <button class="secondary" onclick="window.close()">Close</button>
+    <button onclick="window.print()">Print / Save as PDF</button>
+  </div>
+
+  <div class="page">
+    <!-- ========== SIDEBAR ========== -->
+    <aside class="sidebar">
+      <img src="https://avatars.githubusercontent.com/u/223922457?v=4" alt="Chirag Sapara" class="avatar">
+      <div class="sb-name">Chirag Sapara</div>
+      <div class="sb-role">Frontend Developer</div>
+
+      <div class="sb-block">
+        <div class="sb-label">Contact</div>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:chiagsapara405@gmail.com">chiagsapara405@gmail.com</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            <a href="https://github.com/chiagsapara405-source" target="_blank">github.com/chiagsapara405-source</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <a href="https://www.linkedin.com/in/chirag-sapara-085bb9389" target="_blank">linkedin.com/in/chirag-sapara</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rajkot, Gujarat, India
+          </li>
+        </ul>
+      </div>
+
+      <div class="sb-block">
+        <div class="sb-label">Skills</div>
+        <div class="skill-group">
+          <div class="skill-cat">Languages</div>
+          <div class="skill-items">C, JavaScript (ES6+), HTML5, CSS3</div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Frameworks &amp; Libraries</div>
+          <div class="skill-items">React, Socket.IO, Tailwind CSS, Vite</div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Backend &amp; DB</div>
+          <div class="skill-items">Firebase, Supabase, REST APIs, JWT Auth</div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">Tools &amp; Platforms</div>
+          <div class="skill-items">Git, GitHub, Netlify, Vercel, OpenCode, Cursor, Lovable, v0, Replit, Base44, Linux</div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-cat">AI Workflow</div>
+          <div class="skill-items">Claude, ChatGPT, Antigravity</div>
+        </div>
+      </div>
+
+      <div class="sb-block">
+        <div class="sb-label">Languages</div>
+        <ul class="lang-list">
+          <li><span>English</span><span class="lang-level">Professional</span></li>
+          <li><span>Hindi</span><span class="lang-level">Native</span></li>
+          <li><span>Gujarati</span><span class="lang-level">Native</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ========== MAIN ========== -->
+    <main class="main">
+
+      <div class="block">
+        <div class="block-label">Summary</div>
+        <p class="summary">
+          BCA student at RK University with a strong foundation in C programming and growing
+          expertise in modern web development. I specialize in crafting clean, responsive, and
+          interactive web experiences using HTML, CSS, and JavaScript. Currently exploring
+          AI-driven full-stack development, blending traditional programming with modern AI
+          tools to turn ideas into functional, beautiful digital products.
+        </p>
+      </div>
+
+      <div class="block">
+        <div class="block-label">Projects</div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">Rasoi</span>
+            <a class="project-link" href="https://github.com/chiagsapara405-source/gujarati-spice-order" target="_blank">github ↗</a>
+          </div>
+          <div class="project-stack">React · Vite · Tailwind · Lovable</div>
+          <div class="project-desc">Restaurant app with QR ordering, role-based dashboards (admin / staff / customer), and GST billing.</div>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">CodeCompass</span>
+            <a class="project-link" href="https://codecompass-learn.vercel.app/" target="_blank">live ↗</a>
+          </div>
+          <div class="project-stack">React · TypeScript · Vite · Tailwind · Bolt.new</div>
+          <div class="project-desc">AI-powered dev hub aggregating roadmaps, GitHub repos, and curated YouTube channels for tech students.</div>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">Pulse</span>
+            <a class="project-link" href="https://github.com/chiagsapara405-source/spark-messenger" target="_blank">github ↗</a>
+          </div>
+          <div class="project-stack">React · Socket.IO · JWT</div>
+          <div class="project-desc">Real-time messaging with live chat, emoji reactions, thread replies, and read receipts.</div>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">Code-EZ</span>
+            <a class="project-link" href="https://github.com/chiagsapara405-source/code-ez" target="_blank">github ↗</a>
+          </div>
+          <div class="project-stack">JavaScript · HTML · CSS · AI Integration</div>
+          <div class="project-desc">AI-powered code explanation platform for C, C++, and JavaScript — helps students prep for exams with instant explanations.</div>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">SwiftShare Local</span>
+            <a class="project-link" href="https://github.com/chiagsapara405-source/swiftshare-local" target="_blank">github ↗</a>
+          </div>
+          <div class="project-stack">Web · Local Network · File Transfer</div>
+          <div class="project-desc">Cross-platform file transfer for iOS, Android, and desktop over local network — no cloud needed.</div>
+        </div>
+
+        <div class="project">
+          <div class="project-head">
+            <span class="project-name">Library Management System</span>
+            <a class="project-link" href="https://github.com/chiagsapara405-source/library-management-system" target="_blank">github ↗</a>
+          </div>
+          <div class="project-stack">C · Data Structures · File I/O</div>
+          <div class="project-desc">Menu-driven C project showcasing linked lists and persistent file handling.</div>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-label">Education</div>
+        <div class="edu-item">
+          <div class="edu-head">
+            <span class="edu-school">RK University, Rajkot</span>
+            <span class="edu-year">2025 — 2028</span>
+          </div>
+          <div class="edu-degree">Bachelor of Computer Applications (BCA) — Semester 3</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
