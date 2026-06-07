@@ -1,49 +1,115 @@
-# Chirag Sapra | Portfolio
+# Chirag Sapara | Portfolio
 
-Welcome to my personal portfolio website! This is a modern, responsive web application that showcases my skills, projects, and professional journey.
+Personal portfolio built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools.
 
-## 🚀 Live Demo
+**→ [View Live Site](https://chiargportfolio.netlify.app)**
 
-[View Live Portfolio](http://chiargportfolio.netlify.app/)
+---
 
-## ✨ Features
+## Features
 
-- **Modern Design**: Clean, minimalist interface with smooth animations
-- **Responsive Layout**: Fully optimized for desktop, tablet, and mobile devices
-- **Dark Theme**: Professional dark color scheme with syntax highlighting
-- **Smooth Scrolling**: Seamless navigation between sections
-- **Interactive Elements**: Hover effects and micro-interactions
-- **Code Showcase**: Beautiful code snippet displays with syntax highlighting
+- **Particle system** — animated background particles on the hero section
+- **Typing effect** — rotating taglines with typewriter animation
+- **Scroll reveals** — sections fade and slide in via IntersectionObserver
+- **Tilt + glare** — project cards respond to mouse movement with 3D tilt and specular glare
+- **Skill & tool grids** — categorized skills with proficiency levels, 11 tools in a 3-column grid
+- **Project showcase** — 8 project cards with screenshots, tech badges, and Code/View links
+- **Stat counters** — animated numbers (8 projects, 11 skills, 11 tools)
+- **Contact form** — wired to Formspree, no backend required
+- **Resume** — dedicated print-optimized A4 resume page (`/resume.html`) + downloadable PDF
+- **Background animation** — ambient color-shift (purple/indigo/rose) on the grid overlay
+- **Fully responsive** — works on desktop, tablet, and mobile
+- **Accessibility** — semantic HTML, ARIA attributes, keyboard navigation, `prefers-reduced-motion` support
 
-## 🛠️ Technologies Used
+---
 
-- **HTML5**: Semantic markup and structure
-- **CSS3**: Modern styling with animations and transitions
-- **JavaScript**: Interactive functionality and dynamic content
-- **Google Fonts**: Poppins typography for clean, modern look
+## Sections
 
-## 📁 Project Structure
+1. **Hero** — profile photo, typing taglines, stat counters
+2. **About** — bio with quick info grid (location, degree, interests)
+3. **Skills** — 11 skills across Frontend, Backend, and Other categories
+4. **Projects** — 8 live projects with screenshots, stack tags, and links
+5. **Tools** — 11 developer tools the author uses
+6. **Experience** — work/volunteer history
+7. **Education** — academic background
+8. **Contact** — form + social/email links
+
+---
+
+## Tech Stack
+
+| Layer   | What's used                          |
+| ------- | ------------------------------------ |
+| Markup  | HTML5 (semantic, ARIA attributes)    |
+| Styling | CSS3 (custom properties, grid, flex, animations) |
+| Logic   | Vanilla JavaScript (ES6+)            |
+| Fonts   | Inter (body), Inter Tight (headings) — Google Fonts |
+| Icons   | Font Awesome 6 (free)                |
+| Forms   | Formspree                            |
+| Hosting | Netlify (auto-deploy from GitHub)    |
+
+---
+
+## Project Structure
 
 ```
 chiargportfolio/
 ├── index.html          # Main portfolio page
-├── README.md           # Project documentation
-└── assets/             # Images, icons, and other assets (if any)
+├── index.css           # All styles
+├── index.js            # All interactive logic
+├── resume.html         # Print-optimized A4 resume
+├── README.md           # You are here
+└── assets/
+    ├── rasoi.png
+    ├── codecompass-learn.png
+    ├── pluse.png
+    ├── code-ez.png
+    ├── swift-share.png
+    ├── Product landing page. .png
+    └── Chirag Sapara — Resume.pdf
 ```
 
-## 🎨 Design Highlights
+---
 
-### Color Scheme
-- **Primary**: Dark background (#141820)
-- **Accent**: Purple (#8b5cf6), Green (#4ade80), Blue (#60a5fa)
-- **Text**: Light gray for optimal readability
+## Color Reference
 
-### Typography
-- **Font Family**: Poppins (Google Fonts)
-- **Weights**: 300, 400, 500, 600, 700 for visual hierarchy
+| Role     | Hex     |
+| -------- | ------- |
+| Accent   | `#a78bfa` (purple-400) |
+| Accent (light) | `#c4b5fd` |
+| Accent (dark)  | `#7c3aed` |
+| Surface  | `#0d1117` |
+| Card     | `rgba(255, 255, 255, 0.025)` |
+| Text     | `#e2e8f0` |
 
-### UI Components
-- **Code Cards**: Custom-styled code snippets with terminal-like appearance
-- **Navigation**: Smooth scroll navigation with active state indicators
-- **Responsive Grid**: Flexible layout system for various screen sizes
+---
 
+## Local Development
+
+```bash
+# No install needed — just open in a browser
+start index.html
+
+# Or serve locally with any static server
+npx serve .
+```
+
+The site is pure static — edit any file and reload to see changes.
+
+---
+
+## Deployment
+
+Pushed to `master` branch → GitHub → Netlify auto-deploys on push.
+
+```bash
+git add -A
+git commit -m "your message"
+git push origin master
+```
+
+---
+
+## License
+
+MIT — free to use and adapt.
