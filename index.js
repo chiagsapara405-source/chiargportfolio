@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ==========================================
   // RAF SCROLL SCHEDULER - coalesces all scroll handlers
-  // Must be defined BEFORE initCursor()
   // ==========================================
   const rAFScheduler = {
     callbacks: new Set(),
@@ -46,48 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     },
   };
-
-  // ==========================================
-  // CUSTOM CURSOR - translate3d + rAF interpolation
-  // Only active on pointer devices (not touch)
-  // ==========================================
-  function initCursor() {
-    const dot = $('#cursorDot');
-    const outline = $('#cursorOutline');
-    if (!dot || !outline || !hasFinePointer || prefersReducedMotion) return;
-
-    const target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    const current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-    document.addEventListener('mousemove', (e) => {
-      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-      target.x = e.clientX;
-      target.y = e.clientY;
-    }, { passive: true });
-
-    (function renderOutline() {
-      current.x += (target.x - current.x) * 0.18;
-      current.y += (target.y - current.y) * 0.18;
-      outline.style.transform = `translate(${current.x}px, ${current.y}px) translate(-50%, -50%)`;
-      requestAnimationFrame(renderOutline);
-    })();
-
-    const interactive =
-      "a, button, .btn, .project-card, .skill-card, .tool-card, .contact-link, .nav-link";
-    document.body.addEventListener("mouseover", (e) => {
-      if (e.target.closest(interactive)) {
-        dot.classList.add("hovering");
-        outline.classList.add("hovering");
-      }
-    });
-    document.body.addEventListener("mouseout", (e) => {
-      if (e.target.closest(interactive)) {
-        dot.classList.remove("hovering");
-        outline.classList.remove("hovering");
-      }
-    });
-  }
-  initCursor();
 
   let scrollHandlersRegistered = false;
   function registerScrollHandlers() {
@@ -446,22 +403,6 @@ document.addEventListener("DOMContentLoaded", () => {
       target.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
-
-  // ==========================================
-  if (hasFinePointer && !prefersReducedMotion) {
-    const root = document.documentElement;
-    const onMove = (e) => {
-      root.style.setProperty(
-        "--cursor-x",
-        (e.clientX / window.innerWidth) * 100 + "%",
-      );
-      root.style.setProperty(
-        "--cursor-y",
-        (e.clientY / window.innerHeight) * 100 + "%",
-      );
-    };
-    document.addEventListener("mousemove", onMove, { passive: true });
-  }
 
   // ==========================================
   // HERO PARALLAX - Mouse move

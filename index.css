@@ -133,7 +133,6 @@ body {
   letter-spacing: -0.01em;
   line-height: 1.7;
   overflow-x: hidden;
-  cursor: none;
 }
 
 /* Grid overlay with mouse-reactive glow */
@@ -221,13 +220,6 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   body::after {
     animation: none;
-  }
-}
-
-/* Fix: Only hide cursor on pointer-capable devices */
-@media (hover: none) {
-  body {
-    cursor: auto;
   }
 }
 
@@ -336,58 +328,6 @@ ul {
   }
   66% {
     content: "...";
-  }
-}
-
-/* ============================================
-   CUSTOM CURSOR
-   ============================================ */
-.cursor-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--accent-light);
-  box-shadow: 0 0 16px rgba(167, 139, 250, 0.4);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-}
-
-.cursor-outline {
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(167, 139, 250, 0.25);
-  background: rgba(167, 139, 250, 0.05);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 50%;
-  position: fixed;
-  pointer-events: none;
-  z-index: 9998;
-  will-change: transform;
-}
-
-.cursor-dot.hovering {
-  width: 7px;
-  height: 7px;
-}
-
-.cursor-outline.hovering {
-  width: 42px;
-  height: 42px;
-  border-color: rgba(167, 139, 250, 0.5);
-  background: rgba(167, 139, 250, 0.1);
-}
-
-/* Hide cursor on touch/mobile */
-@media (max-width: 768px), (hover: none) {
-  .cursor-dot,
-  .cursor-outline {
-    display: none;
-  }
-  body {
-    cursor: auto;
   }
 }
 
