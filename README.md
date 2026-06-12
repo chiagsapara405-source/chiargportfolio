@@ -43,7 +43,7 @@ Personal portfolio built with vanilla HTML, CSS, and JavaScript — no framework
 | Markup  | HTML5 (semantic, ARIA attributes)    |
 | Styling | CSS3 (custom properties, grid, flex, animations) |
 | Logic   | Vanilla JavaScript (ES6+)            |
-| Fonts   | Inter (body), Inter Tight (headings) — Google Fonts |
+| Fonts   | Hanken Grotesk — Google Fonts |
 | Icons   | Font Awesome 6 (free)                |
 | Forms   | Formspree                            |
 | Hosting | Netlify (auto-deploy from GitHub)    |
@@ -71,16 +71,16 @@ chiargportfolio/
 
 ---
 
-## Color Reference
+## Color Reference — Chili Obsidian
 
 | Role     | Hex     |
 | -------- | ------- |
-| Accent   | `#a78bfa` (purple-400) |
-| Accent (light) | `#c4b5fd` |
-| Accent (dark)  | `#7c3aed` |
-| Surface  | `#0d1117` |
-| Card     | `rgba(255, 255, 255, 0.025)` |
-| Text     | `#e2e8f0` |
+| Accent (primary) | `#CD1C18` (Chili Red) |
+| Accent (light) | `#FFA896` (Terracotta) |
+| Accent (dark)  | `#9B1313` (Deep Red) |
+| Surface  | `#1f0f0d` (Burgundy-black) |
+| Card     | `#382523` (Elevated surface) |
+| Text     | `#fbdbd7` (Warm white) |
 
 ---
 
