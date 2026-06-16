@@ -302,11 +302,12 @@ ul {
 }
 
 .loader-text {
-  font-family: var(--font-display);
-  font-size: 14px;
-  color: var(--text-secondary);
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Rounded", "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .loader-dots::after {
