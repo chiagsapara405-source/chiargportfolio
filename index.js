@@ -207,28 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
   revealElements.forEach((el) => revealObserver.observe(el));
 
   // ==========================================
-  // SKILL PROGRESS BARS
+  // SKILL CARDS — (progress bars removed;
+  //  neumorphic design uses percent badges instead)
   // ==========================================
-  const skillCards = $$(".skill-card");
-  const skillObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const card = entry.target;
-          const progress = card.querySelector(".skill-progress");
-          const target = card.dataset.progress || 0;
-          if (progress) {
-            setTimeout(() => {
-              progress.style.width = target + "%";
-            }, 200);
-          }
-          skillObserver.unobserve(card);
-        }
-      });
-    },
-    { threshold: 0.3 },
-  );
-  skillCards.forEach((card) => skillObserver.observe(card));
 
   // ==========================================
   // STAT COUNTER ANIMATION
@@ -266,143 +247,15 @@ document.addEventListener("DOMContentLoaded", () => {
   statNumbers.forEach((el) => statObserver.observe(el));
 
   // ==========================================
-  // TILT CARD - Spring-smoothed 3D tilt
+  // (Tilt and particle effects removed —
+  //  neumorphic design relies on pure CSS depth)
   // ==========================================
-  class TiltCard {
-    constructor(el) {
-      this.el = el;
-      this.current = { x: 0, y: 0, rotX: 0, rotY: 0 };
-      this.target = { x: 0, y: 0 };
-      this.maxTilt = 5.5;
-      this.active = false;
-      this.boundMove = this.onMove.bind(this);
-      this.boundLeave = this.onLeave.bind(this);
-      this.boundTick = this.tick.bind(this);
-      this.glare = el.querySelector("[data-glare]");
-
-      el.addEventListener("mousemove", this.boundMove);
-      el.addEventListener("mouseleave", this.boundLeave);
-    }
-
-    onMove(e) {
-      if (prefersReducedMotion) return;
-      const rect = this.el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      this.target.x = ((y - centerY) / centerY) * this.maxTilt;
-      this.target.y = ((centerX - x) / centerX) * this.maxTilt;
-
-      if (!this.active) {
-        this.active = true;
-        this.tick();
-      }
-
-      if (this.glare) {
-        const glareX = (x / rect.width) * 100;
-        const glareY = (y / rect.height) * 100;
-        this.glare.style.setProperty("--glare-x", glareX + "%");
-        this.glare.style.setProperty("--glare-y", glareY + "%");
-        this.glare.style.opacity = "1";
-      }
-    }
-
-    onLeave() {
-      this.target.x = 0;
-      this.target.y = 0;
-      if (this.glare) this.glare.style.opacity = "0";
-    }
-
-    tick() {
-      this.current.rotX += (this.target.x - this.current.rotX) * 0.12;
-      this.current.rotY += (this.target.y - this.current.rotY) * 0.12;
-      this.el.style.transform = `perspective(1000px) rotateX(${this.current.rotX}deg) rotateY(${this.current.rotY}deg) translateY(-6px)`;
-
-      if (
-        Math.abs(this.current.rotX) > 0.01 ||
-        Math.abs(this.current.rotY) > 0.01 ||
-        Math.abs(this.target.x) > 0.01 ||
-        Math.abs(this.target.y) > 0.01
-      ) {
-        rAFScheduler.register(this.boundTick);
-      } else {
-        this.active = false;
-        this.current.rotX = 0;
-        this.current.rotY = 0;
-        if (!this.el.matches(":hover")) {
-          this.el.style.transform = "";
-        }
-      }
-    }
-  }
-
-  const tiltCards = $$("[data-tilt]");
-  const tiltInstances = [];
-
-  const tiltObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const card = entry.target;
-        if (entry.isIntersecting && hasFinePointer && !prefersReducedMotion) {
-          tiltInstances.push(new TiltCard(card));
-          tiltObserver.unobserve(card);
-        }
-      });
-    },
-    { threshold: 0.15 },
-  );
-
-  tiltCards.forEach((card) => tiltObserver.observe(card));
 
   // ==========================================
-  // PARTICLE BACKGROUND - Reduced, pause offscreen
+  // HASH LINKS — handled natively via CSS scroll-behavior: smooth
+  // (removed custom JS to preserve URL hash updates for
+  //  browser back/forward and bookmarkable sections)
   // ==========================================
-  const particleGrid = $("#particleGrid");
-  if (particleGrid && !prefersReducedMotion) {
-    const count = window.innerWidth < 768 ? 6 : 14;
-    const fragment = document.createDocumentFragment();
-
-    for (let i = 0; i < count; i++) {
-      const p = document.createElement("div");
-      p.classList.add("particle");
-      const size = (Math.random() * 2.5 + 1).toFixed(1);
-      p.style.cssText = [
-        `left: ${Math.random() * 100}%`,
-        `animation-duration: ${(Math.random() * 20 + 12).toFixed(1)}s`,
-        `animation-delay: ${(Math.random() * 12).toFixed(1)}s`,
-        `width: ${size}px`,
-        `height: ${size}px`,
-        `opacity: ${(Math.random() * 0.25 + 0.08).toFixed(2)}`,
-      ].join(";");
-      fragment.appendChild(p);
-    }
-    particleGrid.appendChild(fragment);
-
-    // Pause particles when hero is offscreen
-    const hero = $("#hero");
-    if (hero) {
-      const heroObserver = new IntersectionObserver(
-        ([entry]) => {
-          particleGrid.classList.toggle("is-active", entry.isIntersecting);
-        },
-        { threshold: 0 },
-      );
-      heroObserver.observe(hero);
-    }
-  }
-
-  // ==========================================
-  // SMOOTH SCROLL for hash links
-  // ==========================================
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      const target = document.querySelector(this.getAttribute("href"));
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  });
 
   // ==========================================
   // HERO PARALLAX - Mouse move
@@ -502,5 +355,31 @@ document.addEventListener("DOMContentLoaded", () => {
       formStatus.className = "form-status " + type;
       formStatus.textContent = message;
     }
+  }
+
+  // ==========================================
+  // THEME TOGGLE — Dark / Light mode
+  // ==========================================
+  const themeToggle = $("#themeToggle");
+  const themeIcon = $("#themeIcon");
+  const STORAGE_KEY = "portfolio-theme";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+    if (themeIcon) {
+      themeIcon.className = theme === "dark" ? "fas fa-moon" : "fas fa-sun";
+    }
+  }
+
+  // Load saved preference (default to dark)
+  const saved = localStorage.getItem(STORAGE_KEY) || "dark";
+  setTheme(saved);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      setTheme(current === "dark" ? "light" : "dark");
+    });
   }
 }); // end DOMContentLoaded

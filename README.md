@@ -65,7 +65,7 @@ chiargportfolio/
     ├── pluse.png
     ├── code-ez.png
     ├── swift-share.png
-    ├── Product landing page. .png
+    ├── marshall-landing-page.png
     └── Chirag Sapara — Resume.pdf
 ```
 

@@ -43,6 +43,9 @@
         <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
         <li><a href="#contact"   class="nav-link" data-section="contact">Contact</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+      </button>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
@@ -51,7 +54,6 @@
 
   <!-- Hero Section -->
   <section class="hero section" id="hero" aria-label="Introduction">
-    <div class="particle-grid" id="particleGrid" aria-hidden="true"></div>
     <div class="hero-container">
       <div class="hero-content reveal">
         <p class="hero-greeting">&lt;hello_world /&gt;</p>
@@ -73,12 +75,8 @@
           <a href="#contact" class="btn btn-outline">
             <span>Contact Me</span>
             <i class="fas fa-envelope" aria-hidden="true"></i>
-          </a>          <a href="assets/Chirag Sapara — Resume.pdf" class="btn btn-ghost" download aria-label="Download resume PDF">
+          </a>          <a href="assets/Chirag Sapara — Resume.pdf" target="_blank" class="btn btn-ghost" aria-label="View resume PDF">
             <span>Resume</span>
-            <i class="fas fa-download" aria-hidden="true"></i>
-          </a>
-          <a href="assets/Chirag Sapara — Resume.pdf" target="_blank" class="btn btn-ghost">
-            <span>View Resume</span>
             <i class="fas fa-file-pdf" aria-hidden="true"></i>
           </a>
         </div>
@@ -285,20 +283,47 @@
         <h2 class="section-title">Tools & <span class="gradient-text">Platforms</span></h2>
         <div class="section-divider" aria-hidden="true"></div>
       </div>
-      <div class="tools-grid">
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-heart"></i></div><span>Lovable</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-bolt"></i></div><span>v0</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-code-branch"></i></div><span>Replit</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-rocket"></i></div><span>Base44</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-terminal"></i></div><span>OpenCode</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-fire"></i></div><span>Firebase</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-robot"></i></div><span>Claude</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-comment-dots"></i></div><span>ChatGPT</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-cube"></i></div><span>Antigravity</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fab fa-github" style="font-size:36px"></i></div><span>Github</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-i-cursor"></i></div><span>Cursor</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-tools"></i></div><span>Tare</span></div>
-        <div class="tool-card reveal"><div class="tool-icon" aria-hidden="true"><i class="fas fa-database"></i></div><span>Oracle APEX</span></div>
+      <div class="marquee-wrapper reveal">
+        <!-- Row 1 — scrolls left -->
+        <div class="marquee-track marquee-left">
+          <div class="marquee-content">
+            <div class="tool-pill"><i class="fas fa-heart" aria-hidden="true"></i> Lovable</div>
+            <div class="tool-pill"><i class="fas fa-bolt" aria-hidden="true"></i> v0</div>
+            <div class="tool-pill"><i class="fas fa-code-branch" aria-hidden="true"></i> Replit</div>
+            <div class="tool-pill"><i class="fas fa-terminal" aria-hidden="true"></i> OpenCode</div>
+            <div class="tool-pill"><i class="fas fa-i-cursor" aria-hidden="true"></i> Cursor</div>
+            <div class="tool-pill"><i class="fab fa-github" aria-hidden="true"></i> GitHub</div>
+            <div class="tool-pill"><i class="fas fa-cube" aria-hidden="true"></i> Antigravity</div>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <div class="tool-pill"><i class="fas fa-heart" aria-hidden="true"></i> Lovable</div>
+            <div class="tool-pill"><i class="fas fa-bolt" aria-hidden="true"></i> v0</div>
+            <div class="tool-pill"><i class="fas fa-code-branch" aria-hidden="true"></i> Replit</div>
+            <div class="tool-pill"><i class="fas fa-terminal" aria-hidden="true"></i> OpenCode</div>
+            <div class="tool-pill"><i class="fas fa-i-cursor" aria-hidden="true"></i> Cursor</div>
+            <div class="tool-pill"><i class="fab fa-github" aria-hidden="true"></i> GitHub</div>
+            <div class="tool-pill"><i class="fas fa-cube" aria-hidden="true"></i> Antigravity</div>
+          </div>
+        </div>
+        <!-- Row 2 — scrolls right -->
+        <div class="marquee-track marquee-right">
+          <div class="marquee-content">
+            <div class="tool-pill"><i class="fas fa-fire" aria-hidden="true"></i> Firebase</div>
+            <div class="tool-pill"><i class="fas fa-robot" aria-hidden="true"></i> Claude</div>
+            <div class="tool-pill"><i class="fas fa-comment-dots" aria-hidden="true"></i> ChatGPT</div>
+            <div class="tool-pill"><i class="fas fa-database" aria-hidden="true"></i> Oracle APEX</div>
+            <div class="tool-pill"><i class="fas fa-rocket" aria-hidden="true"></i> Base44</div>
+            <div class="tool-pill"><i class="fas fa-tools" aria-hidden="true"></i> Tare</div>
+          </div>
+          <div class="marquee-content" aria-hidden="true">
+            <div class="tool-pill"><i class="fas fa-fire" aria-hidden="true"></i> Firebase</div>
+            <div class="tool-pill"><i class="fas fa-robot" aria-hidden="true"></i> Claude</div>
+            <div class="tool-pill"><i class="fas fa-comment-dots" aria-hidden="true"></i> ChatGPT</div>
+            <div class="tool-pill"><i class="fas fa-database" aria-hidden="true"></i> Oracle APEX</div>
+            <div class="tool-pill"><i class="fas fa-rocket" aria-hidden="true"></i> Base44</div>
+            <div class="tool-pill"><i class="fas fa-tools" aria-hidden="true"></i> Tare</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -314,11 +339,10 @@
       <div class="projects-grid">
 
         <!-- Rasoi — flagship, 7 cols -->
-        <article class="project-card project-card--xl reveal" data-tilt>
+        <article class="project-card project-card--xl reveal" >
           <span class="project-index" aria-hidden="true">01</span>
           <div class="project-banner">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/rasoi.png" alt="Rasoi screenshot"></div>
-            <div class="project-glare" data-glare></div>
+            <div class="project-thumb" aria-hidden="true"><img loading="lazy" src="assets/rasoi.png" alt="Rasoi screenshot"></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://github.com/chiagsapara405-source/gujarati-spice-order" target="_blank" rel="noopener noreferrer" class="project-link-btn">
@@ -346,11 +370,10 @@
         </article>
 
         <!-- CodeCompass — 5 cols -->
-        <article class="project-card project-card--lg reveal" data-tilt>
+        <article class="project-card project-card--lg reveal" >
           <span class="project-index" aria-hidden="true">02</span>
           <div class="project-banner">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/codecompass-learn.png" alt="CodeCompass screenshot"></div>
-            <div class="project-glare" data-glare></div>
+            <div class="project-thumb" aria-hidden="true"><img loading="lazy" src="assets/codecompass-learn.png" alt="CodeCompass screenshot"></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://codecompass-learn.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link-btn">
@@ -375,11 +398,10 @@
         </article>
 
         <!-- Pulse — 4 cols -->
-        <article class="project-card project-card--md reveal" data-tilt>
+        <article class="project-card project-card--md reveal" >
           <span class="project-index" aria-hidden="true">03</span>
           <div class="project-banner">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/pluse.png" alt="Pulse screenshot"></div>
-            <div class="project-glare" data-glare></div>
+            <div class="project-thumb" aria-hidden="true"><img loading="lazy" src="assets/pluse.png" alt="Pulse screenshot"></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://github.com/chiagsapara405-source/spark-messenger" target="_blank" rel="noopener noreferrer" class="project-link-btn">
@@ -404,11 +426,10 @@
         </article>
 
         <!-- Code-EZ AI — 4 cols -->
-        <article class="project-card project-card--md reveal" data-tilt>
+        <article class="project-card project-card--md reveal" >
           <span class="project-index" aria-hidden="true">04</span>
           <div class="project-banner">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/code-ez.png" alt="Code-EZ screenshot"></div>
-            <div class="project-glare" data-glare></div>
+            <div class="project-thumb" aria-hidden="true"><img loading="lazy" src="assets/code-ez.png" alt="Code-EZ screenshot"></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="assets/code-ez.png" target="_blank" rel="noopener noreferrer" class="project-link-btn">
@@ -436,11 +457,10 @@
         </article>
 
         <!-- SwiftShare Local — 4 cols -->
-        <article class="project-card project-card--md reveal" data-tilt>
+        <article class="project-card project-card--md reveal" >
           <span class="project-index" aria-hidden="true">05</span>
           <div class="project-banner">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/swift-share.png" alt="SwiftShare Local screenshot"></div>
-            <div class="project-glare" data-glare></div>
+            <div class="project-thumb" aria-hidden="true"><img loading="lazy" src="assets/swift-share.png" alt="SwiftShare Local screenshot"></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://github.com/chiagsapara405-source/swiftshare-local" target="_blank" rel="noopener noreferrer" class="project-link-btn">
@@ -464,11 +484,10 @@
         </article>
 
         <!-- This Portfolio — 7 cols -->
-        <article class="project-card project-card--wide reveal" data-tilt>
+        <article class="project-card project-card--wide reveal" >
           <span class="project-index" aria-hidden="true">06</span>
           <div class="project-banner">
             <div class="project-thumb" aria-hidden="true"><i class="fas fa-globe"></i></div>
-            <div class="project-glare" data-glare></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://github.com/chiagsapara405-source" target="_blank" rel="noopener noreferrer" class="project-link-btn">
@@ -482,7 +501,7 @@
               <span class="project-stack">HTML · CSS · Vanilla JS</span>
             </div>
             <h3 class="project-title">This Portfolio</h3>
-            <p class="project-desc">Built from scratch with vanilla HTML, CSS, and JS. Features particle system, scroll animations, tilt effects, and responsive design.</p>
+            <p class="project-desc">Built from scratch with vanilla HTML, CSS, and JS. Features smooth scroll animations, responsive design, and a dark neumorphic aesthetic built with pure HTML, CSS, and JS.</p>
             <div class="project-tech">
               <span class="tech-badge">HTML</span>
               <span class="tech-badge">CSS</span>
@@ -493,17 +512,16 @@
         </article>
 
         <!-- Marshall — 7 cols -->
-        <article class="project-card project-card--wide reveal" data-tilt>
+        <article class="project-card project-card--wide reveal" >
           <span class="project-index" aria-hidden="true">07</span>
           <div class="project-banner">
-            <div class="project-thumb" aria-hidden="true"><img src="assets/Product landing page. .png" alt="Marshall landing page screenshot"></div>
-            <div class="project-glare" data-glare></div>
+            <div class="project-thumb" aria-hidden="true"><img loading="lazy" src="assets/marshall-landing-page.png" alt="Marshall landing page screenshot"></div>
             <div class="project-overlay">
               <div class="project-links">
                 <a href="https://github.com/chiagsapara405-source/marshall-product-landing-page" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                   <i class="fab fa-github" aria-hidden="true"></i> Code
                 </a>
-                <a href="assets/Product landing page. .png" target="_blank" rel="noopener noreferrer" class="project-link-btn">
+                <a href="assets/marshall-landing-page.png" target="_blank" rel="noopener noreferrer" class="project-link-btn">
                   <i class="fas fa-image"></i> View
                 </a>
               </div>
