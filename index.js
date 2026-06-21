@@ -9,18 +9,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const $$ = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
 
   // ==========================================
-  // LOADING SCREEN
+  // LOADER — GSAP split-name reveal
   // ==========================================
-  const loader = $("#loader");
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      loader.classList.add("hidden");
-    }, 1000);
-  });
-  setTimeout(() => {
-    if (loader && !loader.classList.contains("hidden"))
-      loader.classList.add("hidden");
-  }, 3500);
+  if (typeof gsap !== "undefined") {
+    const tl = gsap.timeline();
+
+    tl.from(".loader-name span", {
+      y: 150,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: "power4.out",
+    })
+
+      .to(".loader-progress", {
+        width: "100%",
+        duration: 1.2,
+        ease: "power2.inOut",
+      }, "-=0.6")
+
+      .from(".loader-text", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+      }, "-=0.8")
+
+      .to(".loader", {
+        yPercent: -100,
+        duration: 1,
+        ease: "power4.inOut",
+        delay: 0.3,
+      })
+
+      .from(".hero-content", {
+        opacity: 0,
+        y: 100,
+        duration: 1.2,
+        ease: "power4.out",
+      }, "-=0.5");
+  }
 
   // ==========================================
   // RAF SCROLL SCHEDULER - coalesces all scroll handlers
