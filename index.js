@@ -41,11 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 0.3,
       })
 
-      .from(".hero-content", {
+      .fromTo(".hero-content", {
         opacity: 0,
         y: 100,
+      }, {
+        opacity: 1,
+        y: 0,
         duration: 1.2,
         ease: "power4.out",
+        onComplete: () => {
+          // Clear GSAP inline props so CSS (hover, etc.) works normally
+          gsap.set(".hero-content", { clearProps: "transform,opacity" });
+        },
       }, "-=0.5");
   }
 
@@ -176,15 +183,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================================
-  // TYPING ANIMATION
+  // TYPING ANIMATION — with "why" statement
   // ==========================================
   const typingText = $("#typingText");
   if (typingText) {
     const phrases = [
       "Learning MERN full-stack development + Python ",
       "BCA Student | C Programmer",
-      "Continuous learner in Programming and AI",
+      "Building the web to make a difference ",
       "AI Full Stack Enthusiast",
+      "Code with purpose. Build with passion. ",
     ];
     let phraseIndex = 0,
       charIndex = 0,
@@ -218,8 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ==========================================
   // SCROLL REVEAL ANIMATIONS
+  // (exclude hero-content — GSAP loader handles it)
   // ==========================================
-  const revealElements = $$(".reveal");
+  const revealElements = $$(".reveal:not(.hero-content)");
   const revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
