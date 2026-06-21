@@ -5,8 +5,8 @@
 :root {
   /* Typography */
   --font-primary:
-    "Hanken Grotesk", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: "Hanken Grotesk", system-ui, sans-serif;
+    "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
 
   /* Base surfaces — Pure Neutral Charcoal */
   --bg: #1c1c1c;              /* Page background */
