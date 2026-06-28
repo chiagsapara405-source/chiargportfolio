@@ -8,6 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const $ = (sel, scope = document) => scope.querySelector(sel);
   const $$ = (sel, scope = document) => Array.from(scope.querySelectorAll(sel));
 
+
+  //right to left reveal for hero visual
+  gsap.fromTo("#heroVisual", {
+    opacity: 0,
+    x: 100,      // positive = starts from right
+  }, {
+    opacity: 1,
+    x: 0,
+    duration: 1,
+    delay: 3,
+    ease: "power4.out",
+  });
+  
   // ==========================================
   // LOADER — GSAP split-name reveal
   // ==========================================
