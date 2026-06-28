@@ -20,7 +20,28 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 3,
     ease: "power4.out",
   });
+
+  gsap.fromTo("#floatingBadge1", {
+    opacity: 0,
+    y: -100,      // negative = starts from top
+  }, {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 4,
+    ease: "power4.out",
+  });
   
+  gsap.fromTo("#floatingBadge2", {
+    opacity: 0,
+    y: 100,      // positive = starts from bottom
+  }, {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 4,
+    ease: "power4.inOut",
+  });
   // ==========================================
   // LOADER — GSAP split-name reveal
   // ==========================================
