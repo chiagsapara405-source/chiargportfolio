@@ -42,6 +42,18 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 4,
     ease: "power4.inOut",
   });
+//top to bottom reveal for navbar
+gsap.fromTo("#navbar", {
+  opacity: 0,
+  y: -100,      // negative = starts from top
+}, {
+  opacity: 1,
+  y: 0,
+  duration: 1,
+  delay: 3,
+  ease: "power4.inOut",
+});
+
   // ==========================================
   // LOADER — GSAP split-name reveal
   // ==========================================
